@@ -46,9 +46,8 @@ class KiviChatbot {
       return '/.netlify/functions/chatbot';
     }
     
-    // Production avec Render backend (URL à mettre à jour)
-    // Format: https://your-app-name.onrender.com/api
-    return `${window.location.protocol}//${window.location.host.replace('netlify.app', 'onrender.com')}/api`;
+    // Production avec Render backend
+    return 'https://kivi-chatbot.onrender.com/api';
   }
 
   detectLanguage() {
