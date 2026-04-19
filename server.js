@@ -18,15 +18,17 @@ const allowedOrigins = [
   'http://localhost:5500',
   'http://127.0.0.1:5500',
   'http://127.0.0.1:3000',
-  'https://kivi-chatbot.netlify.app'
+  process.env.CORS_ORIGIN || 'https://kivi-chatbot.netlify.app'
 ];
 
 app.use(cors({
   origin: (origin, callback) => {
+    // Autoriser si pas d'origin (requêtes non-browser) ou si dans la liste
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      console.warn(`CORS blocked request from origin: ${origin}`);
+      callback(null, true); // Autoriser quand même pour debug
     }
   },
   credentials: true
