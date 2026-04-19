@@ -88,7 +88,7 @@ Cliquez "Add Environment Variable" et ajoutez:
 
 | Key | Value |
 |-----|-------|
-| `OPENAI_API_KEY` | `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` |
+| `OPENAI_API_KEY` | `sk-proj-VOTRE_CLÉ_ICI` |
 | `NODE_ENV` | `production` |
 | `PORT` | `3001` |
 
