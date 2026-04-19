@@ -8,7 +8,7 @@ class KiviChatbot {
     this.language = this.detectLanguage();
     this.conversationId = this.generateConversationId();
     this.isLoading = false;
-    this.apiUrl = this.getApiUrl();
+    this.apiUrl = 'https://kivi-chatbot.onrender.com/api';
     
     this.translations = {
       fr: {
@@ -28,26 +28,6 @@ class KiviChatbot {
     };
     
     this.init();
-  }
-
-    this.init();
-  }
-
-  getApiUrl() {
-    const hostname = window.location.hostname;
-    
-    // Développement local
-    if (hostname === 'localhost' || hostname === '127.0.0.1') {
-      return 'http://localhost:3001/api';
-    }
-    
-    // Production Netlify (fonction serverless)
-    if (hostname.includes('netlify.app')) {
-      return '/.netlify/functions/chatbot';
-    }
-    
-    // Production avec Render backend
-    return 'https://kivi-chatbot.onrender.com/api';
   }
 
   detectLanguage() {
