@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions Légales - KV Smart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'kv-navy': '#084059',
+            'kv-turquoise': '#2faab0',
+            'kv-lime': '#74bb43'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .logo-img { height: 40px; width: auto; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Funnel Display', sans-serif; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn { animation: fadeIn 0.3s ease-in-out; }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 leading-relaxed">
+  <nav class="bg-kv-navy py-4 shadow-lg">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <a href="index.html"><img src="logo-white.svg" alt="KV Smart" class="logo-img hover:opacity-80 transition"/></a>
+      <a href="index.html" class="text-kv-lime hover:text-white transition">← Retour à l'accueil</a>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-6 py-12 bg-white shadow-lg my-8 rounded-lg">
+    <h1 class="text-3xl font-bold text-kv-navy mb-8 border-b-4 border-kv-lime pb-4">Mentions Légales</h1>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-bold text-kv-navy mb-4">Éditeur du site</h2>
+      <p><strong>KV Smart SARL</strong><br>Société à responsabilité limitée de droit luxembourgeois</p>
+      <p class="mt-2">Siège social : 77, route d'Arlon, L-8311 Capellen, Luxembourg<br>RCS Luxembourg : B295170 | TVA : LU36549359<br>Email : contact@kv-smart.lu | Téléphone : +352 691 028 028</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-bold text-kv-navy mb-4">Hébergement</h2>
+      <p>Ce site est hébergé par OVH. Les données sont servies depuis des centres de données situés dans l'Union européenne (RGPD).</p>
+      <p class="mt-2">OVH | www.ovh.com</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-bold text-kv-navy mb-4">Propriété intellectuelle</h2>
+      <p>L'ensemble du contenu de ce site est la propriété exclusive de KV Smart SARL. Toute reproduction est interdite sans autorisation préalable.</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-bold text-kv-navy mb-4">Responsabilité</h2>
+      <p>KV Smart SARL décline toute responsabilité pour tout dommage résultant de l'utilisation des informations contenues sur ce site.</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-bold text-kv-navy mb-4">Droit applicable</h2>
+      <p>Le présent site est régi par le droit luxembourgeois. Les tribunaux du Grand-Duché de Luxembourg sont seuls compétents.</p>
+    </section>
+  </main>
+
+  <footer class="bg-kv-navy text-gray-300 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-12 mb-8">
+        <div>
+          <img src="logo-white.svg" alt="KV Smart" class="h-12 mb-4">
+          <p class="text-sm">Solutions intelligentes pour votre entreprise</p>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-4">Navigation</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="hover:text-kv-lime transition">Accueil</a></li>
+            <li><a href="index.html#services" class="hover:text-kv-lime transition">Services</a></li>
+            <li><a href="index.html#contact" class="hover:text-kv-lime transition">Contact</a></li>
+            <li><a href="politique-confidentialite.html" class="hover:text-kv-lime transition">Politique de Confidentialité</a></li>
+            <li><a href="conditions-generales-vente.html" class="hover:text-kv-lime transition">Conditions Générales de Vente</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-4">Contact</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="https://maps.app.goo.gl/6v1PfasngrYJTi9k8" target="_blank" rel="noopener noreferrer" class="hover:text-kv-lime transition">📍 77, route d'Arlon</a></li>
+            <li><a href="https://maps.app.goo.gl/6v1PfasngrYJTi9k8" target="_blank" rel="noopener noreferrer" class="hover:text-kv-lime transition">L-8311 Capellen, Luxembourg</a></li>
+            <li>📞 +352 691 028 028</li>
+            <li>✉️ contact@kv-smart.lu</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 pt-8 text-center text-sm">
+        <p class="text-gray-400">&copy; 2026 KV Smart SARL. Tous droits réservés.</p>
+        <p class="text-gray-400 mt-2">SARL de droit luxembourgeois | RCS : B295170 | TVA : LU36549359</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="kivi-chatbot.js"></script>
+</body>
+</html>

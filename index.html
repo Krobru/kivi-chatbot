@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KV Smart - Solutions IT Innovantes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'kv-navy': '#084059',
+            'kv-turquoise': '#2faab0',
+            'kv-lime': '#74bb43'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .logo-img { height: 40px; width: auto; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Funnel Display', sans-serif; }
+    .lang-selector { position: relative; }
+    .lang-dropdown { display: none; position: absolute; top: 100%; right: 0; background: white; border: 2px solid #74bb43; border-radius: 0.5rem; min-width: 120px; z-index: 50; }
+    .lang-dropdown.active { display: block; }
+    .lang-option { padding: 0.5rem 1rem; cursor: pointer; transition: background-color 0.2s; border-bottom: 1px solid #e5e7eb; }
+    .lang-option:last-child { border-bottom: none; }
+    .lang-option:hover { background-color: #f0fdf4; }
+    .lang-option.active { background-color: #74bb43; color: white; }
+  </style>
+  <script>
+    // Translations object
+    const translations = {
+      fr: {
+        title: "KV Smart - Solutions IT Innovantes",
+        services: "Services",
+        contact: "Contact",
+        legalNotices: "Mentions Légales",
+        privacy: "Politique de Confidentialité",
+        terms: "Conditions Générales de Vente",
+        buildings: "Des bâtiments",
+        intelligent: "intelligents,",
+        secure: "sécurisés et",
+        controlled: "maîtrisés.",
+        description: "Nous accompagnons les entreprises, promoteurs et gestionnaires de bâtiments dans la conception, le déploiement et l'exploitation de solutions électriques, Smart Building et de sécurité intelligentes, incluant des développements logiciels sur mesure.",
+        contactUs: "Nous contacter",
+        solutions: "NOS SOLUTIONS & SERVICES",
+        completeSolutions: "Solutions complètes pour vos bâtiments",
+        solutionsDesc: "Des infrastructures électriques à la sécurité intelligente, nous offrons des solutions intégrées pour la performance et la sécurité de vos bâtiments.",
+        service1: "Infrastructures électriques & Smart Building",
+        service2: "Bornes de recharge VE",
+        service3: "Dimensionnement, pilotage, sécurisation des installations",
+        service4: "Détection des points chauds",
+        service4Desc: "Systèmes intelligents de prévention des risques et continuité d'exploitation",
+        service5: "Maintenance infrastructures",
+        service5Desc: "Maintenance préventive et corrective des infrastructures électriques et techniques",
+        service6: "Gestion énergétique intégrée",
+        service6Desc: "Monitoring, analyse, optimisation, rapports",
+        service7: "Éclairage intelligent",
+        service7Desc: "Détection de présence, scénarios, efficacité énergétique",
+        service8: "Sécurité électronique",
+        service9: "Contrôle d'accès électronique",
+        service9Desc: "Badges, biométrie, gestion centralisée, traçabilité",
+        service10: "Détection incendie",
+        service10Desc: "Détection, alarme, scénarios d'évacuation",
+        service11: "Vidéosurveillance",
+        service11Desc: "Analyse, enregistrement, supervision",
+        service12: "Logiciels & intégration",
+        service13: "Développements sur mesure",
+        service13Desc: "Supervision, dashboards, outils métiers",
+        service14: "Interopérabilité",
+        service14Desc: "API, GTB, sécurité, énergie",
+        service15: "Supervision centralisée",
+        service15Desc: "Pilotage multi-sites, alertes, SLA, reporting",
+        about: "À Propos",
+        aboutDesc1: "KV Smart est un intégrateur de solutions Smart Building et de sécurité basé au Luxembourg. Nous accompagnons les entreprises, promoteurs et gestionnaires de bâtiments dans la conception, le déploiement et l'exploitation de leurs infrastructures électriques et systèmes intelligents.",
+        aboutDesc2: "Notre équipe combine expertise terrain et développement logiciel pour vous offrir des solutions sur mesure : bornes de recharge, détection incendie, vidéosurveillance, contrôle d'accès, supervision centralisée et développements personnalisés vidéosurveillance, contrôle d'accès, supervision centralisée et développements personnalisés.",
+        address: "Adresse",
+        phone: "Téléphone",
+        email: "Email",
+        addressValue: "77, route d'Arlon, L-8311 Capellen, Luxembourg",
+        phoneValue: "+352 691 028 028",
+        emailValue: "contact@kv-smart.lu",
+        contactTitle: "Contactez-nous",
+        contactDesc: "Vous avez un projet ? Parlons-en ! Notre équipe est à votre écoute pour discuter de vos besoins et vous proposer les meilleures solutions.",
+        sendEmail: "Envoyer un email",
+        call: "Appeler",
+        footer: "Solutions intelligentes pour votre entreprise",
+        footerNav: "Navigation",
+        footerContact: "Contact",
+        copyright: "© 2026 KV Smart SARL. Tous droits réservés.",
+        legalInfo: "SARL de droit luxembourgeois | RCS : B295170 | TVA : LU36549359"
+      },
+      en: {
+        title: "KV Smart - Innovative IT Solutions",
+        services: "Services",
+        contact: "Contact",
+        legalNotices: "Legal Notices",
+        privacy: "Privacy Policy",
+        terms: "Terms and Conditions",
+        buildings: "Intelligent",
+        intelligent: "buildings,",
+        secure: "secure and",
+        controlled: "controlled.",
+        description: "We support companies, developers and building managers in the design, deployment and operation of smart electrical, Smart Building and security solutions, including custom software development.",
+        contactUs: "Contact Us",
+        solutions: "OUR SOLUTIONS & SERVICES",
+        completeSolutions: "Complete solutions for your buildings",
+        solutionsDesc: "From electrical infrastructures to intelligent security, we offer integrated solutions for the performance and safety of your buildings.",
+        service1: "Electrical Infrastructures & Smart Building",
+        service2: "EV Charging Stations",
+        service3: "Sizing, control, securing installations",
+        service4: "Hot Spot Detection",
+        service4Desc: "Smart risk prevention systems and operational continuity",
+        service5: "Infrastructure Maintenance",
+        service5Desc: "Preventive and corrective maintenance of electrical and technical infrastructures",
+        service6: "Integrated Energy Management",
+        service6Desc: "Monitoring, analysis, optimization, reports",
+        service7: "Smart Lighting",
+        service7Desc: "Presence detection, scenarios, energy efficiency",
+        service8: "Electronic Security",
+        service9: "Electronic Access Control",
+        service9Desc: "Badges, biometrics, centralized management, traceability",
+        service10: "Fire Detection",
+        service10Desc: "Detection, alarm, evacuation scenarios",
+        service11: "Videosurveillance",
+        service11Desc: "Analysis, recording, supervision",
+        service12: "Software & Integration",
+        service13: "Custom Development",
+        service13Desc: "Supervision, dashboards, business tools",
+        service14: "Interoperability",
+        service14Desc: "API, BMS, security, energy",
+        service15: "Centralized Supervision",
+        service15Desc: "Multi-site control, alerts, SLA, reporting",
+        about: "About Us",
+        aboutDesc1: "KV Smart is a Smart Building and security solutions integrator based in Luxembourg. We support companies, developers and building managers in the design, deployment and operation of their electrical infrastructure and smart systems.",
+        aboutDesc2: "Our team combines field expertise and software development to provide you with custom solutions: charging stations, fire detection, video surveillance, access control, centralized supervision and custom developments video surveillance, access control, centralized supervision and custom developments.",
+        address: "Address",
+        phone: "Phone",
+        email: "Email",
+        addressValue: "77, route d'Arlon, L-8311 Capellen, Luxembourg",
+        phoneValue: "+352 691 028 028",
+        emailValue: "contact@kv-smart.lu",
+        contactTitle: "Contact Us",
+        contactDesc: "Have a project? Let's talk! Our team is ready to listen and discuss your needs and propose the best solutions.",
+        sendEmail: "Send Email",
+        call: "Call",
+        footer: "Smart solutions for your business",
+        footerNav: "Navigation",
+        footerContact: "Contact",
+        copyright: "© 2026 KV Smart SARL. All rights reserved.",
+        legalInfo: "Luxembourg company | RCS: B295170 | VAT: LU36549359"
+      },
+      de: {
+        title: "KV Smart - Innovative IT-Lösungen",
+        services: "Dienstleistungen",
+        contact: "Kontakt",
+        legalNotices: "Impressum",
+        privacy: "Datenschutzrichtlinie",
+        terms: "Allgemeine Geschäftsbedingungen",
+        buildings: "Intelligente",
+        intelligent: "Gebäude,",
+        secure: "sicher und",
+        controlled: "gesteuert.",
+        description: "Wir begleiten Unternehmen, Entwickler und Gebäudemanager bei der Planung, Bereitstellung und dem Betrieb intelligenter elektrischer Systeme, Smart Building und Sicherheitslösungen, einschließlich individueller Softwareentwicklung.",
+        contactUs: "Kontaktieren Sie uns",
+        solutions: "UNSERE LÖSUNGEN & DIENSTLEISTUNGEN",
+        completeSolutions: "Komplette Lösungen für Ihre Gebäude",
+        solutionsDesc: "Von elektrischen Infrastrukturen bis hin zu intelligenten Sicherheitssystemen bieten wir integrierte Lösungen für die Leistung und Sicherheit Ihrer Gebäude.",
+        service1: "Elektrische Infrastrukturen & Smart Building",
+        service2: "Elektrofahrzeug-Ladestationen",
+        service3: "Dimensionierung, Steuerung, Sicherung von Anlagen",
+        service4: "Erkennung von Hotspots",
+        service4Desc: "Intelligente Risikoprävention und Betriebskontinuität",
+        service5: "Infrastruktur-Wartung",
+        service5Desc: "Vorbeugung und Behebung von elektrischen und technischen Infrastrukturen",
+        service6: "Integriertes Energiemanagement",
+        service6Desc: "Überwachung, Analyse, Optimierung, Berichte",
+        service7: "Intelligente Beleuchtung",
+        service7Desc: "Präsenzerkennung, Szenarien, Energieeffizienz",
+        service8: "Elektronische Sicherheit",
+        service9: "Elektronische Zutrittskontrolle",
+        service9Desc: "Badges, Biometrie, zentralisierte Verwaltung, Rückverfolgbarkeit",
+        service10: "Brandmelder",
+        service10Desc: "Erkennung, Alarm, Evakuierungsszenarien",
+        service11: "Videoüberwachung",
+        service11Desc: "Analyse, Aufzeichnung, Überwachung",
+        service12: "Software & Integration",
+        service13: "Bespoke-Entwicklung",
+        service13Desc: "Überwachung, Dashboards, Business-Tools",
+        service14: "Interoperabilität",
+        service14Desc: "API, BMS, Sicherheit, Energie",
+        service15: "Zentralisierte Überwachung",
+        service15Desc: "Multi-Site-Controlling, Alarme, SLA, Berichterstattung",
+        about: "Über Uns",
+        aboutDesc1: "KV Smart ist ein in Luxemburg ansässiger Integrator für Smart-Building- und Sicherheitslösungen. Wir begleiten Unternehmen, Entwickler und Gebäudemanager bei Entwurf, Bereitstellung und Betrieb ihrer Elektroinfrastruktur und intelligenter Systeme.",
+        aboutDesc2: "Unser Team verbindet Feldkompetenz und Softwareentwicklung, um Ihnen maßgeschneiderte Lösungen zu bieten: Ladestationen, Brandmelder, Videoüberwachung, Zutrittskontrolle, zentralisierte Überwachung und maßgeschneiderte Entwicklungen Videoüberwachung, Zutrittskontrolle, zentralisierte Überwachung und maßgeschneiderte Entwicklungen.",
+        address: "Adresse",
+        phone: "Telefon",
+        email: "E-Mail",
+        addressValue: "77, route d'Arlon, L-8311 Capellen, Luxemburg",
+        phoneValue: "+352 691 028 028",
+        emailValue: "contact@kv-smart.lu",
+        contactTitle: "Kontaktieren Sie uns",
+        contactDesc: "Haben Sie ein Projekt? Sprechen Sie mit uns! Unser Team steht Ihnen gerne zur Verfügung, um Ihre Anforderungen zu besprechen und die besten Lösungen anzubieten.",
+        sendEmail: "E-Mail senden",
+        call: "Anrufen",
+        footer: "Intelligente Lösungen für Ihr Unternehmen",
+        footerNav: "Navigation",
+        footerContact: "Kontakt",
+        copyright: "© 2026 KV Smart SARL. Alle Rechte vorbehalten.",
+        legalInfo: "Luxemburgisches Unternehmen | RCS: B295170 | VAT: LU36549359"
+      },
+      lu: {
+        title: "KV Smart - Innovativ IT-Léisungen",
+        services: "Servicen",
+        contact: "Kontakt",
+        legalNotices: "Rechtlech Hinweiser",
+        privacy: "Datenschutzerklärung",
+        terms: "Allgemeng Verkafsbedéngungen",
+        buildings: "Intelligente",
+        intelligent: "Gebaier,",
+        secure: "sécher a",
+        controlled: "kontrolliert.",
+        description: "Mir begleeweaen Entreprisen, Entweckler an Gebaiudmanager bei der Planung, Bereitstelle an Betrib vu smarten elektresche Systemer, Smart Building an Sécherheetsléisungen, abesonnesch mat benotzerdefinnt Softwareentwicklung.",
+        contactUs: "Kontaktéiert eis",
+        solutions: "ONSAER LÉISUNGEN & SERVICEN",
+        completeSolutions: "Komplett Léisungen fir Är Gebaier",
+        solutionsDesc: "Von elektresche Infraschtrukturen bis hin zu intelligente Sécherheetsystemer bidden mir integriert Léisungen fir d'Performance an d'Sécherheet vun Äre Gebaieren.",
+        service1: "Elektresch Infraschtrukturen & Smart Building",
+        service2: "Elektroautomobil-Ladestatiounen",
+        service3: "Dimensionéierung, Steierung, Sécher vun Anlagen",
+        service4: "Detektioun vu Hotspots",
+        service4Desc: "Intelligent Risikopreventioun an Betribskontinuitéit",
+        service5: "Infraschtrukturen-Ënnerhalt",
+        service5Desc: "Preventioun an Behebung vu elektresche an techneschen Infraschtrukturen",
+        service6: "Integriert Energiemanagement",
+        service6Desc: "Iwwerwaachung, Analys, Optiméierung, Rapporter",
+        service7: "Intelligent Bélechtung",
+        service7Desc: "Präsenzdetektioun, Szenarien, Energieeffizienz",
+        service8: "Elektronsch Sécherheet",
+        service9: "Elektronsch Zoutrëttskontroll",
+        service9Desc: "Badges, Biometrie, zentraliséiert Verwaltung, Rückverfolgbarkeet",
+        service10: "Brandmelder",
+        service10Desc: "Detektioun, Alarm, Evakuéierungsszenarien",
+        service11: "Videoiwwerwaachung",
+        service11Desc: "Analys, Aufzeeechnung, Iwwerwaachung",
+        service12: "Software & Integratioun",
+        service13: "Benotzerdefinnt Entwecklung",
+        service13Desc: "Iwwerwaachung, Dashboards, Business-Tools",
+        service14: "Interoperabilitéit",
+        service14Desc: "API, BMS, Sécherheet, Energie",
+        service15: "Zentraliséiert Iwwerwaachung",
+        service15Desc: "Multi-Site-Controlling, Alarmer, SLA, Berichterstattung",
+        about: "Iwwer eis",
+        aboutDesc1: "KV Smart ass an Lëtzebuerg ansässeg Integrator fir Smart-Building- an Sécherheetsléisungen. Mir begleeweaen Entreprisen, Entweckler an Gebaiudmanager bei Entworf, Bereitstelle an Betrib vun hirer Elektroinfraschtruktuur an intelligente Systemer.",
+        aboutDesc2: "Onsaer Team kombinéiert Feldkompetenz an Softwareentwicklung, fir Äch maßgeschnéidert Léisungen ze bidden: Ladestatiounen, Brandmelder, Videoiwwerwaachung, Zoutrëttskontroll, zentraliséiert Iwwerwaachung an maßgeschnéidert Entwecklungen Videoiwwerwaachung, Zoutrëttskontroll, zentraliséiert Iwwerwaachung an maßgeschnéidert Entwecklungen.",
+        address: "Adress",
+        phone: "Telefon",
+        email: "E-Mail",
+        addressValue: "77, route d'Arlon, L-8311 Capellen, Lëtzebuerg",
+        phoneValue: "+352 691 028 028",
+        emailValue: "contact@kv-smart.lu",
+        contactTitle: "Kontaktéiert eis",
+        contactDesc: "Hutt Dir e Projet? Schwätz mat eis! Onsaer Team ass bereet, Är Ufuerderungen ze diskutéieren an d'beschte Léisungen ze bidden.",
+        sendEmail: "E-Mail schécken",
+        call: "Uruffen",
+        footer: "Intelligent Léisungen fir Är Entreprise",
+        footerNav: "Navigatioun",
+        footerContact: "Kontakt",
+        copyright: "© 2026 KV Smart SARL. All Rechter reservéiert.",
+        legalInfo: "Lëtzebuergesch Entreprise | RCS: B295170 | VAT: LU36549359"
+      }
+    };
+
+    let currentLanguage = localStorage.getItem('language') || 'fr';
+
+    function setLanguage(lang) {
+      currentLanguage = lang;
+      localStorage.setItem('language', lang);
+      document.documentElement.lang = lang;
+      document.title = translations[lang].title;
+      updatePageContent();
+      closeLanguageDropdown();
+    }
+
+    function getText(key) {
+      return translations[currentLanguage][key] || translations['fr'][key];
+    }
+
+    function updatePageContent() {
+      // Navigation links
+      document.querySelector('[data-translate="services"]').textContent = getText('services');
+      document.querySelector('[data-translate="contact"]').textContent = getText('contact');
+      document.querySelector('[data-translate="legalNotices"]').textContent = getText('legalNotices');
+
+      // Hero section
+      document.querySelector('[data-translate="buildings"]').textContent = getText('buildings');
+      document.querySelector('[data-translate="intelligent"]').textContent = getText('intelligent');
+      document.querySelector('[data-translate="secure"]').textContent = getText('secure');
+      document.querySelector('[data-translate="controlled"]').textContent = getText('controlled');
+      document.querySelector('[data-translate="description"]').textContent = getText('description');
+      document.querySelector('[data-translate="contactUs"]').textContent = getText('contactUs');
+
+      // Services section
+      document.querySelector('[data-translate="solutions"]').textContent = getText('solutions');
+      document.querySelector('[data-translate="completeSolutions"]').textContent = getText('completeSolutions');
+      document.querySelector('[data-translate="solutionsDesc"]').textContent = getText('solutionsDesc');
+
+      for (let i = 1; i <= 15; i++) {
+        const elem = document.querySelector(`[data-translate="service${i}"]`);
+        if (elem) elem.textContent = getText(`service${i}`);
+        const descElem = document.querySelector(`[data-translate="service${i}Desc"]`);
+        if (descElem) descElem.textContent = getText(`service${i}Desc`);
+      }
+
+      // About section
+      document.querySelector('[data-translate="about"]').textContent = getText('about');
+      document.querySelector('[data-translate="aboutDesc1"]').textContent = getText('aboutDesc1');
+      document.querySelector('[data-translate="aboutDesc2"]').textContent = getText('aboutDesc2');
+      document.querySelector('[data-translate="address"]').textContent = getText('address');
+      document.querySelector('[data-translate="phone"]').textContent = getText('phone');
+      document.querySelector('[data-translate="email"]').textContent = getText('email');
+      document.querySelector('[data-translate="addressValue"]').textContent = getText('addressValue');
+      document.querySelector('[data-translate="phoneValue"]').textContent = getText('phoneValue');
+      document.querySelector('[data-translate="emailValue"]').textContent = getText('emailValue');
+
+      // Contact section
+      document.querySelector('[data-translate="contactTitle"]').textContent = getText('contactTitle');
+      document.querySelector('[data-translate="contactDesc"]').textContent = getText('contactDesc');
+      document.querySelector('[data-translate="sendEmail"]').textContent = getText('sendEmail');
+      document.querySelector('[data-translate="call"]').textContent = getText('call');
+
+      // Footer
+      document.querySelector('[data-translate="footer"]').textContent = getText('footer');
+      document.querySelector('[data-translate="footerNav"]').textContent = getText('footerNav');
+      document.querySelector('[data-translate="footerContact"]').textContent = getText('footerContact');
+      document.querySelector('[data-translate="copyright"]').textContent = getText('copyright');
+      document.querySelector('[data-translate="legalInfo"]').textContent = getText('legalInfo');
+
+      // Update language button
+      updateLanguageButton();
+    }
+
+    function toggleLanguageDropdown() {
+      const dropdown = document.getElementById('langDropdown');
+      dropdown.classList.toggle('active');
+    }
+
+    function closeLanguageDropdown() {
+      const dropdown = document.getElementById('langDropdown');
+      dropdown.classList.remove('active');
+    }
+
+    function updateLanguageButton() {
+      const options = document.querySelectorAll('.lang-option');
+      options.forEach(option => {
+        option.classList.remove('active');
+        if (option.getAttribute('data-lang') === currentLanguage) {
+          option.classList.add('active');
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      setLanguage(currentLanguage);
+    });
+
+    document.addEventListener('click', function(e) {
+      const langSelector = document.querySelector('.lang-selector');
+      if (langSelector && !langSelector.contains(e.target)) {
+        closeLanguageDropdown();
+      }
+    });
+  </script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn { animation: fadeIn 0.3s ease-in-out; }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+  <nav class="bg-kv-navy py-4 shadow-lg">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <a href="index.html"><img src="logo-white.svg" alt="KV Smart" class="logo-img hover:opacity-80 transition"/></a>
+      <div class="flex items-center gap-8">
+        <ul class="flex gap-8">
+          <li><a href="#services" class="text-white hover:text-kv-lime transition" data-translate="services">Services</a></li>
+          <li><a href="#contact" class="text-white hover:text-kv-lime transition" data-translate="contact">Contact</a></li>
+          <li><a href="mentions-legales.html" class="text-white hover:text-kv-lime transition" data-translate="legalNotices">Mentions Légales</a></li>
+        </ul>
+        <div class="lang-selector">
+          <button onclick="toggleLanguageDropdown()" class="bg-kv-lime text-kv-navy px-4 py-2 rounded-lg font-bold hover:shadow-lg transition flex items-center gap-2">
+            <span id="currentLang">FR</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <div class="lang-option active" data-lang="fr" onclick="setLanguage('fr'); document.getElementById('currentLang').textContent = 'FR'">Français</div>
+            <div class="lang-option" data-lang="en" onclick="setLanguage('en'); document.getElementById('currentLang').textContent = 'EN'">English</div>
+            <div class="lang-option" data-lang="de" onclick="setLanguage('de'); document.getElementById('currentLang').textContent = 'DE'">Deutsch</div>
+            <div class="lang-option" data-lang="lu" onclick="setLanguage('lu'); document.getElementById('currentLang').textContent = 'LU'">Lëtzebuergesch</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="bg-gradient-to-r from-kv-navy to-kv-turquoise text-white py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <h1 class="text-5xl font-black mb-4">
+        <div data-translate="buildings">Des bâtiments</div>
+        <div class="text-kv-turquoise" data-translate="intelligent">intelligents,</div>
+        <div class="text-kv-lime" data-translate="secure">sécurisés et</div>
+        <div class="text-kv-lime" data-translate="controlled">maîtrisés.</div>
+      </h1>
+      <p class="text-xl text-gray-100 mb-8" data-translate="description">Nous accompagnons les entreprises, promoteurs et gestionnaires de bâtiments dans la conception, le déploiement et l'exploitation de solutions électriques, Smart Building et de sécurité intelligentes, incluant des développements logiciels sur mesure.</p>
+      <a href="#contact" class="inline-block bg-kv-lime text-kv-navy px-8 py-3 rounded-lg font-bold hover:shadow-lg transition" data-translate="contactUs">Nous contacter</a>
+    </div>
+  </section>
+
+  <section id="services" class="py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-kv-navy mb-2 text-center" data-translate="solutions">NOS SOLUTIONS & SERVICES</h2>
+      <h3 class="text-xl font-semibold text-kv-turquoise mb-4 text-center" data-translate="completeSolutions">Solutions complètes pour vos bâtiments</h3>
+      <p class="text-center text-gray-700 mb-12 max-w-4xl mx-auto" data-translate="solutionsDesc">Des infrastructures électriques à la sécurité intelligente, nous offrons des solutions intégrées pour la performance et la sécurité de vos bâtiments.</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-kv-lime hover:shadow-lg transition">
+          <h4 class="font-bold text-kv-navy mb-3" data-translate="service1">Infrastructures électriques & Smart Building</h4>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-kv-turquoise hover:shadow-lg transition">
+          <h4 class="font-bold text-kv-navy mb-3" data-translate="service2">Bornes de recharge VE</h4>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-kv-lime hover:shadow-lg transition">
+          <h4 class="font-bold text-kv-navy mb-3" data-translate="service3">Dimensionnement, pilotage, sécurisation des installations</h4>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-kv-turquoise hover:shadow-lg transition">
+          <h4 class="font-bold text-kv-navy mb-3" data-translate="service4">Détection des points chauds</h4>
+          <p class="text-sm text-gray-700" data-translate="service4Desc">Systèmes intelligents de prévention des risques et continuité d'exploitation</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-kv-lime hover:shadow-lg transition">
+          <h4 class="font-bold text-kv-navy mb-3" data-translate="service5">Maintenance infrastructures</h4>
+          <p class="text-sm text-gray-700" data-translate="service5Desc">Maintenance préventive et corrective des infrastructures électriques et techniques</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-kv-turquoise hover:shadow-lg transition">
+          <h4 class="font-bold text-kv-navy mb-3" data-translate="service6">Gestion énergétique intégrée</h4>
+          <p class="text-sm text-gray-700" data-translate="service6Desc">Monitoring, analyse, optimisation, rapports</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-kv-lime hover:shadow-lg transition">
+          <h4 class="font-bold text-kv-navy mb-3" data-translate="service7">Éclairage intelligent</h4>
+          <p class="text-sm text-gray-700" data-translate="service7Desc">Détection de présence, scénarios, efficacité énergétique</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-kv-turquoise hover:shadow-lg transition">
+          <h4 class="font-bold text-kv-navy mb-3" data-translate="service8">Sécurité électronique</h4>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-kv-lime hover:shadow-lg transition">
+          <h4 class="font-bold text-kv-navy mb-3" data-translate="service9">Contrôle d'accès électronique</h4>
+          <p class="text-sm text-gray-700" data-translate="service9Desc">Badges, biométrie, gestion centralisée, traçabilité</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-kv-turquoise hover:shadow-lg transition">
+          <h4 class="font-bold text-kv-navy mb-3" data-translate="service10">Détection incendie</h4>
+          <p class="text-sm text-gray-700" data-translate="service10Desc">Détection, alarme, scénarios d'évacuation</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-kv-lime hover:shadow-lg transition">
+          <h4 class="font-bold text-kv-navy mb-3" data-translate="service11">Vidéosurveillance</h4>
+          <p class="text-sm text-gray-700" data-translate="service11Desc">Analyse, enregistrement, supervision</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-kv-turquoise hover:shadow-lg transition">
+          <h4 class="font-bold text-kv-navy mb-3" data-translate="service12">Logiciels & intégration</h4>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-kv-lime hover:shadow-lg transition">
+          <h4 class="font-bold text-kv-navy mb-3" data-translate="service13">Développements sur mesure</h4>
+          <p class="text-sm text-gray-700" data-translate="service13Desc">Supervision, dashboards, outils métiers</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-kv-turquoise hover:shadow-lg transition">
+          <h4 class="font-bold text-kv-navy mb-3" data-translate="service14">Interopérabilité</h4>
+          <p class="text-sm text-gray-700" data-translate="service14Desc">API, GTB, sécurité, énergie</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-kv-lime hover:shadow-lg transition">
+          <h4 class="font-bold text-kv-navy mb-3" data-translate="service15">Supervision centralisée</h4>
+          <p class="text-sm text-gray-700" data-translate="service15Desc">Pilotage multi-sites, alertes, SLA, reporting</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-kv-navy text-white py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-12 text-center" data-translate="about">À Propos</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <p class="text-gray-100 mb-4 leading-relaxed" data-translate="aboutDesc1">KV Smart est un intégrateur de solutions Smart Building et de sécurité basé au Luxembourg. Nous accompagnons les entreprises, promoteurs et gestionnaires de bâtiments dans la conception, le déploiement et l'exploitation de leurs infrastructures électriques et systèmes intelligents.</p>
+          <p class="text-gray-100 leading-relaxed" data-translate="aboutDesc2">Notre équipe combine expertise terrain et développement logiciel pour vous offrir des solutions sur mesure : bornes de recharge, détection incendie, vidéosurveillance, contrôle d'accès, supervision centralisée et développements personnalisés vidéosurveillance, contrôle d'accès, supervision centralisée et développements personnalisés.</p>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-kv-turquoise bg-opacity-20 p-4 rounded-lg">
+            <p class="font-bold text-kv-lime mb-2">📍 <span data-translate="address">Adresse</span></p>
+            <p class="text-gray-100"><a href="https://maps.app.goo.gl/6v1PfasngrYJTi9k8" target="_blank" rel="noopener noreferrer" class="hover:text-kv-lime transition" data-translate="addressValue">77, route d'Arlon, L-8311 Capellen, Luxembourg</a></p>
+          </div>
+          <div class="bg-kv-turquoise bg-opacity-20 p-4 rounded-lg">
+            <p class="font-bold text-kv-lime mb-2">📞 <span data-translate="phone">Téléphone</span></p>
+            <p class="text-gray-100"><a href="tel:+352691028028" class="hover:text-kv-lime transition" data-translate="phoneValue">+352 691 028 028</a></p>
+          </div>
+          <div class="bg-kv-turquoise bg-opacity-20 p-4 rounded-lg">
+            <p class="font-bold text-kv-lime mb-2">✉️ <span data-translate="email">Email</span></p>
+            <p class="text-gray-100"><a href="mailto:contact@kv-smart.lu" class="hover:text-kv-lime transition" data-translate="emailValue">contact@kv-smart.lu</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-kv-navy mb-12 text-center" data-translate="contactTitle">Contactez-nous</h2>
+      <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <p class="text-gray-700 mb-8" data-translate="contactDesc">Vous avez un projet ? Parlons-en ! Notre équipe est à votre écoute pour discuter de vos besoins et vous proposer les meilleures solutions.</p>
+        <div class="space-y-4">
+          <a href="mailto:contact@kv-smart.lu" class="block text-center bg-kv-lime text-kv-navy py-3 rounded-lg font-bold hover:shadow-lg transition" data-translate="sendEmail">Envoyer un email</a>
+          <a href="tel:+352691028028" class="block text-center border-2 border-kv-navy text-kv-navy py-3 rounded-lg font-bold hover:bg-kv-navy hover:text-white transition" data-translate="call">Appeler</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-kv-navy text-gray-300 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-12 mb-8">
+        <div>
+          <img src="logo-white.svg" alt="KV Smart" class="h-12 mb-4">
+          <p class="text-sm" data-translate="footer">Solutions intelligentes pour votre entreprise</p>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-4" data-translate="footerNav">Navigation</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#services" class="hover:text-kv-lime transition" data-translate="services">Services</a></li>
+            <li><a href="#contact" class="hover:text-kv-lime transition" data-translate="contact">Contact</a></li>
+            <li><a href="mentions-legales.html" class="hover:text-kv-lime transition" data-translate="legalNotices">Mentions Légales</a></li>
+            <li><a href="politique-confidentialite.html" class="hover:text-kv-lime transition" data-translate="privacy">Politique de Confidentialité</a></li>
+            <li><a href="conditions-generales-vente.html" class="hover:text-kv-lime transition" data-translate="terms">Conditions Générales de Vente</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-4" data-translate="footerContact">Contact</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="https://maps.app.goo.gl/6v1PfasngrYJTi9k8" target="_blank" rel="noopener noreferrer" class="hover:text-kv-lime transition">📍 77, route d'Arlon</a></li>
+            <li><a href="https://maps.app.goo.gl/6v1PfasngrYJTi9k8" target="_blank" rel="noopener noreferrer" class="hover:text-kv-lime transition">L-8311 Capellen, Luxembourg</a></li>
+            <li>📞 +352 691 028 028</li>
+            <li>✉️ contact@kv-smart.lu</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 pt-8 text-center text-sm">
+        <p class="text-gray-400" data-translate="copyright">&copy; 2026 KV Smart SARL. Tous droits réservés.</p>
+        <p class="text-gray-400 mt-2" data-translate="legalInfo">SARL de droit luxembourgeois | RCS : B295170 | TVA : LU36549359</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="kivi-chatbot.js"></script>
+</body>
+</html>
