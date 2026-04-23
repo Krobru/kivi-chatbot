@@ -8,7 +8,7 @@ class KiviChatbot {
     this.language = this.detectLanguage();
     this.conversationId = this.generateConversationId();
     this.isLoading = false;
-    this.apiUrl = 'https://kivi-chatbot.onrender.com/api';
+    this.apiUrl = this.getApiUrl();
     
     this.translations = {
       fr: {
@@ -32,6 +32,19 @@ class KiviChatbot {
 
   detectLanguage() {
     return document.documentElement.lang === 'en' ? 'en' : 'fr';
+  }
+
+  getApiUrl() {
+    // En développement local, utiliser localhost:3001
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      return 'http://localhost:3001/api';
+    }
+    // En production Netlify, utiliser la redirection locale (qui pointe vers Render)
+    if (window.location.hostname.includes('netlify.app')) {
+      return '/api';
+    }
+    // Fallback - utiliser l'URL Render directement
+    return 'https://kivi-chatbot.onrender.com/api';
   }
 
   generateConversationId() {
@@ -161,7 +174,9 @@ class KiviChatbot {
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+        const errorText = await response.text();
+        console.error(`HTTP ${response.status}: ${errorText}`);
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
       }
 
       const data = await response.json();
@@ -170,14 +185,17 @@ class KiviChatbot {
         this.addMessage('bot', data.message);
         this.showNotification();
       } else {
+        console.error('API Error:', data.error);
         this.addMessage('bot', data.error || this.getText('error'));
       }
     } catch (error) {
-      console.error('Erreur:', error);
+      console.error('Erreur complète:', error);
+      console.error('API URL utilisée:', this.apiUrl);
       let errorMsg = this.getText('error');
       
       if (error instanceof TypeError) {
         errorMsg = this.getText('connectionError');
+        console.error('TypeError - Connexion impossible à:', this.apiUrl);
       }
       
       this.addMessage('bot', errorMsg);

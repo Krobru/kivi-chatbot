@@ -1,10 +1,19 @@
 [build]
-command = "npm install"
+command = "echo 'Static site deployment'"
 publish = "."
+ignore = "npm ci"
 
+# Rediriger les appels API vers le backend Render
 [[redirects]]
 from = "/api/*"
-to = "/.netlify/functions/chatbot/:splat"
+to = "https://kivi-chatbot.onrender.com/api/:splat"
+status = 200
+force = true
+
+# Support pour SPA (Single Page Application)
+[[redirects]]
+from = "/*"
+to = "/index.html"
 status = 200
 
 [[headers]]
@@ -13,3 +22,9 @@ for = "/*"
 Access-Control-Allow-Origin = "*"
 Access-Control-Allow-Methods = "GET, POST, OPTIONS"
 Access-Control-Allow-Headers = "Content-Type"
+Cache-Control = "public, max-age=3600"
+
+[[headers]]
+for = "/*.html"
+[headers.values]
+Cache-Control = "no-cache"

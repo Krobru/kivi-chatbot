@@ -18,7 +18,13 @@ const allowedOrigins = [
   'http://localhost:5500',
   'http://127.0.0.1:5500',
   'http://127.0.0.1:3000',
-  process.env.CORS_ORIGIN || 'https://kivi-chatbot.netlify.app'
+  'http://localhost:8000',
+  'http://localhost:8080',
+  'http://127.0.0.1:8000',
+  'http://127.0.0.1:8080',
+  'https://kvs2.netlify.app',
+  'https://kivi-chatbot.netlify.app',
+  process.env.CORS_ORIGIN || 'https://kvs2.netlify.app'
 ];
 
 app.use(cors({
